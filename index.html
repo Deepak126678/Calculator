@@ -5,193 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment5</title>
     <style>
-        body{
+        body {
             text-align: center;
-            padding:50px;
-            margin-top:20vh;
-            border:2px solid black;
-            background-color: aliceblue;
+            padding: 50px;
+            margin-top: 20vh;
+            
+            background-color: rgb(187, 223, 254);
         }
-        button{
-            font-size: 20px;
+        div{
+            border:2px solid black;
+            background-color: aquamarine;
+        }
+        button {
+            font-size: 60px;
             border-radius: 30%;
-            margin-right:5vw;
-            margin-top:5vh;
+            margin-right: 5vw;
+            margin-top: 5vh;
             background-color: grey;
         }
-        h1{
+        h1 {
             font-size: 30px;
         }
-        #submit{
-            margin-top:5vh;
+        #submit {
+            margin-top: 5vh;
             background-color: aqua;
+            font-size: 30px;
         }
-      
-        
     </style>
-
-
     <script>
-        
-        
-             arr= [];
-              /**
-         Submit Button function
-          **/
-            function store(){
-                document.onload = function() {  
-        document.getElementById('input').focus();
-        }
+        /**
+         * creating a arrey for storing user values
+         * **/
+        let arr = [];
 
-                const inputValue=document.getElementById("input").value;
-                if(isNaN(inputValue) || (inputValue===" "))
-        {
-            alert("this is not a number");
-                const inputValue=document.getElementById("input").value;
-                arr.push(inputValue);
-            }
-            else 
-            {
-                
-                parseInt(inputValue)
-                 
-                arr.push( parseInt(inputValue));
+         /**
+          Fun for storing user values in the arrey
+         * **/
+        function store() {
+            const inputValue = document.getElementById("input").value;
+            if (isNaN(inputValue) || inputValue.trim() === "") {
+                alert("This is not a number");
+            } else {
+                arr.push(parseInt(inputValue));
                 console.log(arr);
-                document.getElementById("input").value='';
-                
+                document.getElementById("input").value = '';
             }
-            
-        
-      
-        
+        }
+         /**
+         Function for performing addition on arrey
+          **/
+
+        function Addition(arr) {
+            if (arr.length < 2) {
+                alert("At least provide 2 numbers");
+                return;
+            }
+            const sum = arr.reduce((acc, num) => acc + num, 0);
+            console.log(sum);
+            document.getElementById("input").value = sum;
+            arr.length = 0;
         }
         /**
-         function for the addition 
+         Function for performing Multiplication on arrey
           **/
-        function Addition(arr){
-            limit=arr.length;
-            if(limit===0 || (limit===1)){
-                alert("Atleast provide 2  Number")
+
+        function Multiply(arr) {
+            if (arr.length < 2) {
+                alert("At least provide 2 numbers");
+                return;
             }
-               let sum = 0;
-               for (let i = 0; i < limit; i++)
-
-                {
-                  
-                 sum += arr[i];
-                 
-               }
-               console.log(sum);
-               document.getElementById('input').value=sum;
-               arr.splice(0, arr.length);
-
-  
-
-
-              
+            const product = arr.reduce((acc, num) => acc * num, 1);
+            console.log(product);
+            document.getElementById("input").value = product;
+            arr.length = 0;
         }
-         /**
-         function for the Multiplication
+        /**
+         Function for performing Subtraction on arrey
           **/
-        function Multiply(arr){
-            limit=arr.length;
-            if(limit===0 || (limit===1)){
-                alert("Atleast provide 2  Number")
+
+        function Substract(arr) {
+            if (arr.length < 2) {
+                alert("At least provide 2 numbers");
+                return;
             }
-               let mul= 1;
-               for (let i = 0; i < limit; i++)
-
-                {
-                  
-                 mul *= arr[i];
-                 
-               }
-               console.log(mul);
-              
-               document.getElementById('input').value=mul;
-               arr.splice(0, arr.length);
-               
-
-              
-  
-
-
-              
+            const result = arr.reduce((acc, num) => acc - num);
+            console.log(result);
+            document.getElementById("input").value = result;
+            arr.length = 0;
         }
-         /**
-         function for the Substraction
+        /**
+         Function for performing Division on arrey
           **/
-        function Substract(arr){
-            limit=arr.length;
-            if(limit===0 || (limit===1)){
-                alert("Atleast provide 2  Number")
+
+        function Divide(arr) {
+            if (arr.length < 2) {
+                alert("At least provide 2 numbers");
+                return;
             }
-               let sub = arr[0];
-               for (let i = 1; i < limit; i++)
-
-                {
-                  
-                 sub = sub-arr[i];
-                 //console.log(sub);
-                 
-               }
-              // console.log(sub);
-               document.getElementById('input').value=sub;
-               arr.splice(0, arr.length);
-
-             
-               
-  
-
-
-              
-        }
-         /**
-         function for the Division
-          **/
-        function Divide(arr){
-            limit=arr.length;
-            
-            if(limit===0 || (limit===1)){
-                alert("Atleast provide 2  Number")
-            }
-            
-               let div = arr[0];
-               for (let i = 1; i < limit; i++)
-
-                {
-                  
-                 div= div / arr[i];
-                 console.log(div);
-                 
-               }
-               console.log(div);
-               document.getElementById('input').value=div;
-               arr.splice(0, arr.length);
-  
-
-
-              
+            const result = arr.reduce((acc, num) => acc / num);
+            console.log(result);
+            document.getElementById("input").value = result;
+            arr.length = 0;
         }
 
-
+        /**
+        Focus on howering
+        **/
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('input').addEventListener('mouseenter', function () {
+                this.focus();
+            });
+        });
     </script>
 </head>
 <body>
-    <h1> Calculator</h1>
-    <input type="text" id="input" >
+    <div>
+    <h1>Calculator</h1>
+    <input type="text" id="input">
     <br>
-    <button onclick="store()" autofocus id="submit">Submit</button>
-    
+    <button onclick="store()" id="submit">Submit</button>
     <br>
-    <button onclick="Addition(arr)" autofocus>+</button>
+    <button onclick="Addition(arr)">+</button>
     <button onClick="Substract(arr)">-</button>
-    
-    <button onclick="Multiply(arr)" autofocus>*</button>
-    <button onclick="Divide(arr)" autofocus>/</button>
-   
-    
-    
-    
+    <button onclick="Multiply(arr)">*</button>
+    <button onclick="Divide(arr)">/</button>
+</div>
 </body>
 </html>
+
+    
+    
