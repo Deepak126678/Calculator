@@ -108,14 +108,7 @@
             arr.length = 0;
         }
 
-        /**
-        Focus on howering
-        **/
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('input').addEventListener('mouseenter', function () {
-                this.focus();
-            });
-        });
+      
     </script>
 </head>
 <body>
@@ -130,6 +123,12 @@
     <button onclick="Multiply(arr)">*</button>
     <button onclick="Divide(arr)">/</button>
 </div>
+     
+    <script>
+        document.getElementById('input').onmouseenter = function () {
+            this.focus();
+        };
+    </script>
 </body>
 </html>
 
